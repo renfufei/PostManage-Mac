@@ -1,0 +1,30 @@
+name: PostManage
+options:
+  bundleIdPrefix: local.postmanage
+  deploymentTarget:
+    macOS: '14.0'
+targets:
+  PostManage:
+    type: application
+    platform: macOS
+    sources: [PostManage/Sources, PostManage/Resources/Assets.xcassets, PostManage/Resources/en.lproj/Localizable.strings, PostManage/Resources/zh-Hans.lproj/Localizable.strings]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: local.postmanage.app
+        MARKETING_VERSION: 1.0.1
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_VERSION: '5.10'
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: PostManage
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.developer-tools
+        CODE_SIGNING_ALLOWED: NO
+        INFOPLIST_FILE: PostManage/Resources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - sdk: JavaScriptCore.framework
+  PostManageTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [PostManage/Tests]
+    dependencies:
+      - target: PostManage
